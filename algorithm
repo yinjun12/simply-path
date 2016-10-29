@@ -1,0 +1,19 @@
+    string simplifyPath(string path) {
+       stringstream ss(path);
+       string temp,res;
+       vector<string>vec;
+       while(getline(ss,temp,'/'))
+       {
+           if(temp=="..")
+           {
+               if(vec.size()!=0)vec.pop_back();
+           }
+           else if(temp==""||temp==".")
+           continue;
+           else
+           vec.push_back(temp);
+       }
+        for(string s:vec)
+        res=res+"/"+s;
+        return res==""?"/":res;
+    }
